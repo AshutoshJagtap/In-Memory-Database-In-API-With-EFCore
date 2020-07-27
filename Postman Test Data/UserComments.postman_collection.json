@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "b6274917-69c4-4b17-8462-a4334e6c4b5a",
+		"name": "UserComments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET :  Get All User Comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:62587/api/UserComments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62587",
+					"path": [
+						"api",
+						"UserComments"
+					]
+				},
+				"description": "Get request for UserCommentsController"
+			},
+			"response": []
+		},
+		{
+			"name": "POST : Add User Comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"firstName\": \"Sundar\",\r\n        \"lastName\": \"Pichai\",\r\n        \"posts\": [\r\n           { \"Content\" : \"This is my second comment.\" }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:62587/api/UserComments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62587",
+					"path": [
+						"api",
+						"UserComments"
+					]
+				},
+				"description": "Post a new comment."
+			},
+			"response": []
+		},
+		{
+			"name": "GET : Get User Comment with ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:62587/api/UserComments/f8c3c315-e912-4f41-b688-3c15966c0f8b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62587",
+					"path": [
+						"api",
+						"UserComments",
+						"f8c3c315-e912-4f41-b688-3c15966c0f8b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT : Update existing User Comment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": \"ec8a7e6c-a582-400f-890f-bbd16c79f6dd\",\r\n        \"firstName\": \"Bill\",\r\n        \"lastName\": \"Gates\",\r\n        \"posts\": [\r\n            {\r\n                \"id\": \"3a1510b3-1e23-48b8-8053-306d04891e7c\",\r\n                \"userId\": \"ec8a7e6c-a582-400f-890f-bbd16c79f6dd\",\r\n                \"content\": \"This is my ffd comment.\"\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:62587/api/UserComments/ec8a7e6c-a582-400f-890f-bbd16c79f6dd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62587",
+					"path": [
+						"api",
+						"UserComments",
+						"ec8a7e6c-a582-400f-890f-bbd16c79f6dd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE : Delete existing UserComment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:62587/api/UserComments/33e9a51b-e29c-4b83-add0-754bbff21cba",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62587",
+					"path": [
+						"api",
+						"UserComments",
+						"33e9a51b-e29c-4b83-add0-754bbff21cba"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

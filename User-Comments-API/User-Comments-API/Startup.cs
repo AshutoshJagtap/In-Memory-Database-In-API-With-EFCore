@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using User_Comments_API.DatabaseContext;
 
 namespace User_Comments_API
 {
@@ -25,6 +27,7 @@ namespace User_Comments_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase(databaseName: "Im-Memory-Database"));
             services.AddControllers();
         }
 
@@ -35,7 +38,12 @@ namespace User_Comments_API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //Adding some test data at start up.
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<ApiContext>();
+                InMemoryData.Add(context);
+            }
             app.UseHttpsRedirection();
 
             app.UseRouting();
